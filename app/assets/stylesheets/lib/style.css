@@ -1,0 +1,113 @@
+body {
+  background-color: #fif89e;
+}
+
+.logo-position {
+  margin-left: 4px;
+}
+.nav-wrapper .input-field input[type=search] {
+  height: 64px;
+}
+.nav-wrapper input[type="search"]:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.book-info-wrapper {
+  width: 30%;
+}
+
+.font-size-150 {
+  font-size: 150% !important;
+}
+
+.main-part-wrapper {
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.find-button-wrapper {
+  margin-top: 30px;
+}
+
+.mylist-button-wrapper,
+.create-button-wrapper {
+  margin-top: 20px;
+}
+
+.find-button-wrapper button,
+.mylist-button-wrapper button,
+.create-button-wrapper button {
+  width: 175px;
+}
+
+.book-info-wrapper {
+  margin-top: 10px;
+}
+
+/*スライドバー*/
+
+.slider-title-icons {
+  font-size:120%;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.slider {
+  display: none;
+  margin: 0 24px;
+  overflow: hidden;
+}
+
+.slider.slick-initialized {
+  display: block;
+}
+
+#arrows .slider-prev {
+  top: 37%;
+}
+
+#arrows .slider-next {
+  right: -7%;
+  top: 37%;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+  font-family: 'slick';
+  color: #000;
+  line-height: 1;
+  opacity: .75;
+}
+
+.slick-slide {
+  padding: 1.5em 0;
+  background-color: #424242;
+  text-align: center;
+  font-size: 1.1em;
+  outline: 0;
+}
+
+.slider .content-img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+.book-title {
+  margin-left: 7px;
+  width: 150px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}

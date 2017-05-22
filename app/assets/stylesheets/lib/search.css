@@ -1,0 +1,78 @@
+/*.breadcrumb:before {
+    content: "\e7c3";
+    font-family: "Material-Design-Icons";
+}*/
+#nav-mobile li.search .search-wrapper i.material-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#nav-mobile li.search .search-wrapper {
+  width: 90%;
+  margin-left: 5%;
+}
+
+#nav-mobile li.search .search-wrapper input#search {
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    width: 100%;
+    height: 45px;
+    margin: 0;
+    padding: 0 45px 0 15px;
+    border: 0;
+}
+
+ul.side-nav.fixed ul.collapsible-accordion a.collapsible-header {
+    padding: 0 30px;
+}
+
+.select-wrapper {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.order-select p {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10%;
+}
+
+.head-char-select p label {
+  margin-left: 10%;
+}
+
+.never-read-radio-wrapper {
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+.ever-read-radio-wrapper {
+  margin-left: 5%;
+  margin-top: 0;
+}
+
+.favorite-check-wrapper {
+  margin-left: 10%;
+}
+
+.book-table-position {
+  margin-left: 20%;
+  width: 70%;
+  border-collapse: collapse;
+}
+
+/*td, th {
+  width: 10%;
+  white-space: nowrap;
+}*/
+
+.table-favorite-check {
+  margin-left: 15%;
+}
+
+.pagination-position {
+  margin-left: 20%;
+}
