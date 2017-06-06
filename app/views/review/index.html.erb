@@ -1,0 +1,163 @@
+<script>
+$(document).ready(function() {
+  $('select').material_select();
+});
+</script>
+<div>
+  <ul id="nav-mobile" class="side-nav fixed col s3" style="transform: translateX(0%)">
+    <li class="logo">
+      <a id="logo-container" href="#"><h4 class="orange-text accent-1"><font face="arial black">BOOKLOG</font></h4></a>
+    </li>
+    <%= form_tag review_search_path, remote: true, :class=>"book_search" do %>
+    <input type="submit" name="" value="submit" style="display: none;">
+    <li class="search">
+      <div class="search-wrapper card">
+        <input id="search" name="book_name">
+        <i id="submit" class="material-icons">search</i>
+        <div class="search-results"></div>
+      </div>
+    </li>
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li class="bold">
+          <div class="order-select">
+            <select>
+              <optgroup label="order">
+                <option value="1">あいうえお順</option>
+                <option value="2">人気順</option>
+                <option value="3">価格順</option>
+              </optgroup>
+            </select>
+          </div>
+        </li>
+        <li class="bold">
+          <a class="collapsible-header waves-effect waves-teal">頭文字</a>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <div class="head-char-select">
+                  <div class="switch center-align">
+                    <label>
+                      All Cancel
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      All Check
+                    </label>
+                  </div>
+                  <p>
+                    <input type="checkbox" id="a-line" />
+                    <label for="a-line">ア行</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="k-line" checked="checked" />
+                    <label for="k-line">カ行</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="s-line" checked="checked" />
+                    <label for="s-line">サ行</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="t-line" />
+                    <label for="t-line">タ行</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="n-line" checked="checked" disabled="disabled" />
+                    <label for="n-line">ナ行</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="h-line" disabled="disabled" />
+                    <label for="h-line">ハ行</label>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold">
+          <a class="collapsible-header waves-effect waves-teal">ジャンル</a>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <div class="head-char-select">
+                  <div class="switch center-align">
+                    <label>
+                      All Cancel
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      All Check
+                    </label>
+                  </div>
+
+                  <p>
+                    <input type="checkbox" id="action" />
+                    <label for="action">冒険</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="romance" checked="checked" />
+                    <label for="romance">ロマンス</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="horror" checked="checked" />
+                    <label for="horror">ホラー</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="mystery" />
+                    <label for="mystery">ミステリー</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="sf" checked="checked" disabled="disabled" />
+                    <label for="sf">SF</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" id="junbun" disabled="disabled" />
+                    <label for="junbun">純文学</label>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold">
+          <p class="collapsible-header waves-effect waves-teal never-read-radio-wrapper">
+            <input name="ever-read" type="radio" id="ever-read" value="false"/>
+            <label for="ever-read">未読のみ</label>
+          </p>
+          <p class="collapsible-header waves-effect waves-teal ever-read-radio-wrapper">
+            <input name="ever-read" type="radio" id="never-read" value="true"/>
+            <label for="never-read">既読のみ</label>
+          </p>
+          <p class="ollapsible-header waves-effect waves-teal favorite-check-wrapper">
+            <input name="favorite" type="checkbox" class="filled-in" id="favorite-check" value="false"/>
+            <label for="favorite-check">お気に入りのみ</label>
+          </p>
+        </li>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<div class="book-table-wrapper">
+  <%= page_entries_info @books %>
+  <table id="book-search-table" class="highlight responsive-table centerd">
+    <thead>
+      <tr>
+        <th>本の名前</th>
+        <th>作家名</th>
+        <th>ジャンル</th>
+        <th>読み始めた日</th>
+        <th>読み終わった日</th>
+        <th>評価</th>
+        <th>お気に入り</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <%= render partial: 'partial/book_table_content', locals: {book: book} %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="paginator-wrapper center-align">
+    <%= render partial: 'partial/pagination', locals: {book_pages: @books} %>
+  </div>
+</div>

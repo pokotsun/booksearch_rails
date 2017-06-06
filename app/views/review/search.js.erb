@@ -1,0 +1,5 @@
+$table_datas = $('#book-search-table tbody');
+$table_datas.children('tr').remove();
+<% @books.each do |book| %>
+$table_datas.append('<%= j(render partial: "partial/book_table", locals: {book: book}) %>');
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book: one
+  begin_date: 2017-05-23
+  end_date: 2017-05-23
+  favorite: false
+  score: 1
+  review: MyText
+
+two:
+  book: two
+  begin_date: 2017-05-23
+  end_date: 2017-05-23
+  favorite: false
+  score: 1
+  review: MyText

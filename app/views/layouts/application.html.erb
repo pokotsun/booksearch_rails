@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <title>BooksearchRails</title>
@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render_breadcrumbs builder: ::CustomBreadcrumbsBuilder %>
     <%= yield %>
   </body>
 </html>

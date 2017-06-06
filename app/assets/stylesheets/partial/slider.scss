@@ -1,0 +1,58 @@
+/*スライドバー*/
+.slider-wrapper .slider-title-icons {
+  font-size:120%;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.slider.slick-initialized {
+  display: block;
+}
+
+#arrows .slider-prev {
+  left: -45px;
+  top: 37%;
+}
+
+#arrows .slider-next {
+  right: -30px;
+  top: 37%;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+  font-family: 'slick';
+  font-size: 40px;
+  color: #e53935;
+  line-height: 1;
+  opacity: .75;
+}
+
+.slick-slide {
+  padding: 1.5em 0;
+  height: 300px;
+  background-color: #424242;
+  text-align: center;
+  font-size: 1.1em;
+  outline: 0;
+}
+
+.slider .content-img {
+  max-width: 100%;
+  height: 200px;
+  max-height: 270px;
+  margin: 0 auto;
+}
+
+.book-title {
+  margin: 0px 5px 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}

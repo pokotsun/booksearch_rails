@@ -1,3 +1,49 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com
+
+.logo-position {
+  margin-left: 4px;
+}
+.nav-wrapper .input-field input[type=search] {
+  height: 64px;
+}
+.nav-wrapper input[type="search"]:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.book-info-wrapper {
+  width: 30%;
+}
+
+.font-size-150 {
+  font-size: 150% !important;
+}
+
+.main-part-wrapper {
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.find-button-wrapper {
+  margin-top: 30px;
+}
+
+.mylist-button-wrapper,
+.create-button-wrapper {
+  margin-top: 20px;
+}
+
+.find-button-wrapper a,
+.mylist-button-wrapper a,
+.create-button-wrapper a {
+  width: 175px;
+}
+
+.book-info-wrapper {
+  margin-top: 10px;
+}

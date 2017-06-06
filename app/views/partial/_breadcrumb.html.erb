@@ -1,0 +1,24 @@
+<% if elements.present? %>
+  <% p elements.last.name %>
+  <div class="navbar-fixed">
+    <nav class="cyan lighten-2" role="navigation">
+      <div class="nav-wrapper">
+        <div class="logo-position">
+          <%= link_to root_path, :class => "brand-logo orange-text accent-1" do %>
+            <font face="arial black">BOOKLOG</font>
+          <% end %>
+        </div>
+        <div class="col-sm-12 breadcrumb-wrapper">
+          <% elements[0..-2].each do |element| %>
+            <% if element.path.present? %>
+              <%= link_to element.name, element.path, class: 'breadcrumb' %>
+            <% else %>
+              <%= link_to element.name, '', class: 'breadcrumb' %>
+            <% end %>
+          <% end %>
+          <%= link_to elements.last.name, '', class: 'breadcrumb' %>
+        </div>
+      </div>
+    </nav>
+  </div>
+<% end %>
