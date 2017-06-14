@@ -1,1 +1,22 @@
-<%= paginate book_pages, remote: true %>
+<table id="book-search-table" class="highlight responsive-table centerd">
+  <thead>
+    <tr>
+      <th>本の名前</th>
+      <th>作家名</th>
+      <th>ジャンル</th>
+      <th>読み始めた日</th>
+      <th>読み終わった日</th>
+      <th>評価</th>
+      <th>お気に入り</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% books.each do |book| %>
+    <%= render partial: 'partial/book_table_content', locals: {book: book} %>
+    <% end %>
+  </tbody>
+</table>
+<div id="paginator-wrapper" class="center-align">
+  <%= paginate books, remote: true %>
+</div>

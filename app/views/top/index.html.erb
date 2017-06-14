@@ -9,7 +9,7 @@
           <% end %>
         </div>
         <div class="mylist-button-wrapper">
-          <%= link_to review_mylist_path, :class => "btn waves-effect waves-light z-depth-5 btn-large" do %>
+          <%= link_to review_path(favorite: true), :class => "btn waves-effect waves-light z-depth-5 btn-large" do %>
             <i class="material-icons left">loyalty</i>マイリスト
           <% end %>
         </div>
@@ -23,9 +23,9 @@
         <div class="card blue-grey lighten-1">
           <div class="card-content white-text">
             <span class="card-title">今までに読んだ本の数</span>
-            <p>15冊</p>
+            <p class="book-num-size"><%= @ever_read_book_count %>冊</p>
             <span class="card-title">まだ読んでいないお気に入りにした本の数</span>
-            <p>8冊</p>
+            <p class="book-num-size"><%= @never_read_book_count %>冊</p>
           </div>
           <div class="card-action">
             <a href="#">未読リストへ</a>
@@ -38,11 +38,11 @@
 </div>
 <div class="container">
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">assessment</i>ランキング上位</a></h3>
-  <%= render partial: 'partial/book_slider', locals: {books:@books} %>
+  <%= render partial: 'partial/ranking_slider', locals: {books:@ranking_order_books} %>
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">error</i>未読の本</a></h3>
-  <%= render partial: 'partial/book_slider', locals: {books:@books} %>
+  <%= render partial: 'partial/book_slider', locals: {books:@never_read_books} %>
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">done</i>既読の本</a></h3>
-  <%= render partial: 'partial/book_slider', locals: {books:@books} %>
+  <%= render partial: 'partial/book_slider', locals: {books:@ever_read_books} %>
 </div>
 
 <%= render partial: 'partial/footer' %>

@@ -1,0 +1,4 @@
+<p>
+  <input type="checkbox" id="genre-<%= genre.id %>" name="genres[]" value="<%= genre.id %>" <%= "checked" if @selected_genre_id == genre.id.to_s %>/>
+  <label for="genre-<%= genre.id %>"><%= genre.name %></label>
+</p>

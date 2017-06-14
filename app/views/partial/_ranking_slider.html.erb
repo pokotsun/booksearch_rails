@@ -7,6 +7,7 @@
           <%= link_to review_path+"/#{book.id}" do %>
             <img class="content-img" src="<%= book.image_url || asset_path("thumbnail/noImage.jpg") %>">
           <% end %>
+        <div><%= i + 1 %>位</div>
         <div class="book-title center-align"><%= book.title %></div>
         <% read_status = ReadStatus.find_or_create_by(book_id: book.id) %>
         <div class="">評価点:

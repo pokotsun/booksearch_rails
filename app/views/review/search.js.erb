@@ -1,5 +1,7 @@
 $table_datas = $('#book-search-table tbody');
+$paginator_wrapper = $('#paginator-wrapper');
 $table_datas.children('tr').remove();
 <% @books.each do |book| %>
-$table_datas.append('<%= j(render partial: "partial/book_table", locals: {book: book}) %>');
+$table_datas.append('<%= j(render partial: "partial/book_table_content", locals: {book: book}) %>');
 <% end %>
+$paginator_wrapper.html('<%= j(paginate @books, remote: true) %>');

@@ -2,20 +2,6 @@
 // All this logic will automatically be available in application.js.
 $(function() {
   $('#edit-wrapper').hide();
-
-  $('.chips-placeholder').material_chip({
-    data: [{
-      tag: '一気読み',
-    }, {
-      tag: '泣ける',
-    }, {
-      tag: '犬が出てくる',
-    }, {
-      tag: 'てか普通に怖い'
-    }],
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
-  });
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 17 // Creates a dropdown of 15 years to control year
@@ -70,17 +56,60 @@ $(function() {
     });
   });
 
-  $('#favorite-check').on('check', function() {
-    if($(this).val()) {
-      $(this).prop('checked', false);
-    }
-    else {
-      $(this).prop('checked', true);
-    }
+  // タグのイベント定義
+  // read_status_idの取得
+  var read_status_id = $('#tag-wrapper').attr('data-read-status-id');
+  // 初期化
+  $.getJSON('/tag_api/?read_status_id='+read_status_id, function(data) {
+    var names = [];
+    $.each(data, function(val) {
+      if(this.name != null) {
+        names.push({tag: this.name});
+      }
+    });
+    $('.chips-placeholder').material_chip({
+      data: names,
+      placeholder: 'Enter a tag',
+      secondaryPlaceholder: '+Tag',
+    });
+  })
+
+
+  // $.ajax({
+  //   type: 'GET',
+  //   url: '/tag_api/?read_status_id=10',
+  //   dataType: 'json',
+  // }).success(function(data) {
+  //   var names = [];
+  //   $.each(data, function() {
+  //     if(this.name != null) {
+  //       names.push(this.name);
+  //     }
+  //   })
+  //   $('.chips-placeholder').material_chip({
+  //     data: names,
+  //     placeholder: 'Enter a tag',
+  //     secondaryPlaceholder: '+Tag',
+  //   });
+  //   console.log(names);
+  // }).error(function(data) {
+  //   alert('error!!');
+  // });
+  $('.chips').on('chip.add', function(e, chip){
+    console.log(chip);
+    postData = {"read_status_id": read_status_id, "tag_name": chip.tag}
+    console.log(postData);
+    $.post('/tag_api/add', postData);
   });
 
-  // ページネーションのajax化
-  $("pagenator-wrapper").html("<%= j(render partial: 'partial/pagination', locals: {book_pages: @books}) %>");
-  $("pagenator-wrapper").append("<%= j(render partial: 'partial/pagination', locals: {book_pages: @books}) %>");
+  $('.chips').on('chip.delete', function(e, chip){
+    console.log(chip);
+    postData = {"read_status_id": read_status_id, "tag_name": chip.tag}
+    console.log(postData);
+    $.post('/tag_api/remove', postData);
+  });
 
+  $('.chips').on('chip.select', function(e, chip){
+    console.log(chip);
+  });
 });

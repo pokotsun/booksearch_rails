@@ -19,6 +19,10 @@
   width: 30%;
 }
 
+.book-num-size {
+  font-size: 20px;
+}
+
 .font-size-150 {
   font-size: 150% !important;
 }
@@ -29,19 +33,16 @@
   margin-bottom: 50px;
 }
 
-.find-button-wrapper {
-  margin-top: 30px;
-}
-
+.find-button-wrapper,
 .mylist-button-wrapper,
 .create-button-wrapper {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .find-button-wrapper a,
 .mylist-button-wrapper a,
 .create-button-wrapper a {
-  width: 175px;
+  width: 190px;
 }
 
 .book-info-wrapper {

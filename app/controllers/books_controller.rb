@@ -11,25 +11,23 @@ class BooksController < ApplicationController
   def new
     if params[:isbn].nil? or params[:isbn].empty?
       render :new_isbn
-
     else
-      uri=URI.parse("https://www.googleapis.com/books/v1/volumes?q=isbn:#{params[:isbn]}")
-      json=Net::HTTP.get(uri)
+      uri = URI.parse("https://www.googleapis.com/books/v1/volumes?q=isbn:#{params[:isbn]}")
+      json = Net::HTTP.get(uri)
       result = JSON.parse(json)
-      result["totalItems"]
+      # p result["totalItems"]
       if result["totalItems"] == 0
         p "book not found"
         respond_to do |format|
           format.html { render :new_isbn }
           format.js { render :not_found_dialog }
         end
-
       else
         @result = result["items"][0]["volumeInfo"]
-        @book = Book.find_by(isbn: @result["industryIdentifiers"][1]["identifier"])
+        p @result
+        @book = Book.find_by_isbn(@result["industryIdentifiers"][1]["identifier"])
         if @book.nil?
           @book = Book.new
-          p @result
           @book.genre_id = 1
           @book.title=@result["title"]
           @book.author=@result["authors"][0]

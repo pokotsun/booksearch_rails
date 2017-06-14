@@ -1,10 +1,12 @@
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#">ジャンル1</a></li>
-  <li><a href="#">ジャンル2</a></li>
-  <li><a href="#">ジャンル3</a></li>
-  <li><a href="#">ジャンル4</a></li>
-  <li></li>
+<%= form_tag review_search_path do %>
+<ul id="genre-select" name="genre" class="dropdown-content">
+  <% @genres.each do |genre| %>
+    <li>
+      <%= link_to(genre.name, review_path(genre_id: genre.id)) %>
+    </li>
+  <% end %>
 </ul>
+<% end %>
 <div class="navbar-fixed">
   <nav class="cyan lighten-2" role="navigation">
     <div class="nav-wrapper">
@@ -16,16 +18,16 @@
 
       <ul class="right hide-on-med-and-down">
         <li>
-          <a class="dropdown-button" class="button-collapase" href="#!" data-activates="dropdown1">検索ジャンル<i class="material-icons right">arrow_drop_down</i></a>
+          <a class="dropdown-button" class="button-collapase"  data-activates="genre-select">検索ジャンル<i class="material-icons right">arrow_drop_down</i></a>
         </li>
         <li>
-          <form>
+          <%= form_tag review_search_path, remote: true, :class=>"book_search" do %>
             <div class="input-field">
               <input id="search" type="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
             </div>
-          </form>
+          <% end %>
         </li>
       </ul>
     </div>

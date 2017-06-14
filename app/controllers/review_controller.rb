@@ -2,38 +2,85 @@ class ReviewController < ApplicationController
   add_breadcrumb 'ホーム', :root
   add_breadcrumb 'レビュー'
   def index
-    # @books =  Book.all
     @books = Book.page(params[:page]).per(10).order(:id)
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
+    @genres = Genre.where.not("id = ?", 1)
+    @selected_genre_id = params[:genre_id] || "1"
+    @favorite_flg = params[:favorite]||"false"
+    if @favorite_flg == "true"
+      @books = @books.get_favo_books
+    end
+    if @selected_genre_id != "1"
+      @books = @books.where("genre_id = ?", @selected_genre_id)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
     @book = Book.find(params[:book_id])
     @read_status = ReadStatus.find_or_create_by(book_id: @book.id)
+    @genres = Genre.where.not("id = ?", 1)
   end
 
   def update_read_status
+    @book = Book.find(params[:book_id])
     @read_status = ReadStatus.find_by(book_id: params[:book_id])
     @read_status.update(read_status_params)
+    @book.genre_id = params[:book_genre]
+    @book.save
     render :update
   end
 
+  # def search_by_name
+  #   @books = Book.where("title like '%#{params[:book_name]}'%")
+  #   if @books.count > 0
+  #     respond_to do |format|
+  #       format.html { render :  }
+  #       format.js { render :not_found_dialog }
+  #   else
+  #     respond_to do |format|
+  #       format.html { render : }
+  #       format.js { render :not_found_dialog }
+  #     end
+  #
+  #   end
+  # end
+
   def search
-    @books = Book.where("title like '%#{params[:book_name]}%'")
+    @books = Book.page(params[:page]).per(10).order(:id)
+    @books = @books.where("title like '%#{params[:book_name]}%'")
+    # @books = Book.get_ever_or_never_read_books(params["ever_read"])
     if params["ever-read"] == "true"
-      @books = @books.joins(:read_statuses).where("read_statuses.end_date not ?", nil)
+      @books = @books.ever_read_books
     elsif params["ever-read"] == "false"
-      @books = @books.joins(:read_statuses).where("read_statuses.end_date is ?", nil)
+      @books = @books.never_read_books
+    end
+    if params["favorite"] =="on"
+      @books = @books.get_favo_books
+    end
+    unless params[:genres].nil?
+      flg = true
+      params[:genres].each do |genre_id|
+        @books = @books.or(Book.where("genre_id = ?", genre_id.to_i)) unless flg
+        @books = @books.where("genre_id = ?", genre_id) if flg
+        flg = false
+      end
+    end
+    if params["order"].present?
+      if params["order"] == "1"
+        @books = @books.sort_by_created_at_asc
+      elsif params["order"] == "2"
+        @books = @books.sort_by_created_at_desc
+      elsif params["order"] == "3"
+        @books = @books.sort_by_score_desc
+      else
+        @books = @books.joins(:genre).includes(:genre).order("genres.name DESC")
+      end
     end
   end
-  def mylist
-    @books = Book.all
-    @books = @books.joins(:read_statuses).where("read_statuses.favorite not ?", nil)
-    render :index
-  end
+
   private
   def read_status_params
     params.require(:read_status).permit(:begin_date, :end_date, :score, :review)

@@ -31,6 +31,8 @@
   <div class="card-content z-depth-5 personal-data-wrapper">
     <div><h5><i class="material-icons">check</i>既読</h5></div>
     <p></p>
+    <div>ジャンル: <span id="review_genre"><%= @book.genre.name %></span></div>
+    <p></p>
     <div>評価: <span id="review_score"><%=@read_status.score%></span>点</div>
     <p></p>
     <div>感想 : <span id="review_text"><%=@read_status.review %></span></div>
@@ -47,14 +49,6 @@
   <h3>個人的な感想の編集</h3>
   <div class="card-content z-depth-5 personal-data-wrapper">
     <%= form_for @read_status, url: review_path+"/#{@book.id}",remote: true do |f| %>
-    <div class="switch">
-      <label>
-        未読
-        <input type="checkbox">
-        <span class="lever"></span>
-        既読
-      </label>
-    </div>
     <p></p>
     <label for="begin-date">読み始めた日</label>
     <input id="begin-date" name="read_status[begin_date]" type="date" class="datepicker">
@@ -66,11 +60,11 @@
     <p></p>
     <div class="input-genre-field">
       <label>ジャンルを選んでください</label>
-      <select>
+      <select name="book_genre">
         <option value="" disabled selected>ジャンル</option>
-        <option value="1">ホラー</option>
-        <option value="2">ミステリ</option>
-        <option value="3">闇芝居</option>
+          <% @genres.each do |genre| %>
+        <option value="<%= genre.id %>"><%= genre.name %></option>
+        <% end %>
       </select>
     </div>
     <p></p>
@@ -88,8 +82,8 @@
       </div>
     </div>
     <div>タグ: </div>
-    <div class="container">
-      <div class="chips chips-placeholder"></div>
+    <div id="tag-wrapper" class="container" data-read-status-id="<%= @read_status.id %>">
+      <div class="chips chips-placeholder" ></div>
     </div>
 
     <div class="row">
