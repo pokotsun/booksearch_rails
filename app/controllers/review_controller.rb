@@ -6,9 +6,13 @@ class ReviewController < ApplicationController
     @books = Book.page(params[:page]).per(10).order(:id)
     @genres = Genre.where.not("id = ?", 1)
     @selected_genre_id = params[:genre_id] || "1"
+    selected_name = params[:search_name] || ""
     @favorite_flg = params[:favorite]||"false"
     if @favorite_flg == "true"
       @books = @books.get_favo_books
+    end
+    if selected_name != ""
+      @books = @books.where("title like '%#{selected_name}%'")
     end
     if @selected_genre_id != "1"
       @books = @books.where("genre_id = ?", @selected_genre_id)
@@ -79,10 +83,6 @@ class ReviewController < ApplicationController
       else
         @books = @books.joins(:genre).includes(:genre).order("genres.name DESC")
       end
-    end
-    respond_to do |format|
-      format.html { render :index }
-      format.js { render : }
     end
   end
 

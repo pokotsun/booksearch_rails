@@ -21,9 +21,9 @@
           <a class="dropdown-button" class="button-collapase"  data-activates="genre-select">検索ジャンル<i class="material-icons right">arrow_drop_down</i></a>
         </li>
         <li>
-          <%= form_tag review_search_path, :class=>"book_search" do %>
+          <%= form_tag review_path, method: "get", :class=>"book_search" do %>
             <div class="input-field">
-              <input id="search" type="search" required>
+              <input id="search" name="search_name" type="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
             </div>
