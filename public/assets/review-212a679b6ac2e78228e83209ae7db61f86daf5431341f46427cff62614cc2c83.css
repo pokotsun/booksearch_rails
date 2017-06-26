@@ -1,0 +1,128 @@
+/* line 6, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.title-logo {
+  font-family: arial black;
+}
+
+/* line 10, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.breadcrumb-wrapper {
+  margin-right: 20px;
+  margin-left: 320px;
+}
+
+/* line 15, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+#nav-mobile li.search .search-wrapper i.material-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* line 22, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+#nav-mobile li.search .search-wrapper {
+  width: 90%;
+  margin-left: 5%;
+}
+
+/* line 27, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+#nav-mobile li.search .search-wrapper input#search {
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 0 45px 0 15px;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+/* line 41, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+ul .side-nav.fixed ul.collapsible-accordion a.collapsible-header {
+  padding: 0 30px;
+}
+
+/* line 45, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.select-wrapper {
+  width: 90%;
+  margin-left: 5%;
+}
+
+/* line 50, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.order-select select {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10%;
+}
+
+/* line 56, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.genre-select p label {
+  margin-left: 10%;
+}
+
+/* line 60, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.never-read-radio-wrapper {
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+/* line 65, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.ever-read-radio-wrapper {
+  margin-left: 5%;
+  margin-top: 0;
+}
+
+/* line 70, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.favorite-check-wrapper {
+  margin-left: 10%;
+}
+
+/* line 74, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.book-table-wrapper {
+  padding-left: 320px !important;
+}
+
+/* line 78, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+td a {
+  color: #3e2723;
+}
+
+/* line 82, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.table-favorite-check {
+  margin-left: 15%;
+}
+
+/* line 92, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.book-image-wrapper {
+  margin-top: 10%;
+}
+
+/* line 96, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.basic-data-wrapper {
+  margin-top: 5%;
+}
+
+/* line 100, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.personal-data-wrapper {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+/* line 105, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.evaluation-range-wrapper {
+  width: 25%;
+}
+
+/* line 109, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.edit-button {
+  margin-top: 5%;
+  margin-left: 80%;
+}
+
+/* line 114, /home/pokotsun/project/booksearch/app/assets/stylesheets/review.scss */
+.save-button,
+.cancel-button {
+  margin-top: 10%;
+  width: 180px;
+}

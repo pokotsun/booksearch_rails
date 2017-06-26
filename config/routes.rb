@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'review/search' => 'review#search'
   get 'review/:book_id' => 'review#show'
   patch 'review/:book_id' => 'review#update_read_status'
+  post 'review/update_favorite' => 'review#update_favorite'
   get 'tag_api' => 'tag_api#index'
   post 'tag_api/add' => 'tag_api#add'
   post 'tag_api/remove' => 'tag_api#remove'

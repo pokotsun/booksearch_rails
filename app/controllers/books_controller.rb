@@ -15,6 +15,7 @@ class BooksController < ApplicationController
       uri = URI.parse("https://www.googleapis.com/books/v1/volumes?q=isbn:#{params[:isbn]}")
       json = Net::HTTP.get(uri)
       result = JSON.parse(json)
+      p result
       # p result["totalItems"]
       if result["totalItems"] == 0
         p "book not found"
@@ -22,15 +23,20 @@ class BooksController < ApplicationController
           format.html { render :new_isbn }
           format.js { render :not_found_dialog }
         end
-      else
+      else # ちゃんと結果が帰ってきてたら
         @result = result["items"][0]["volumeInfo"]
         p @result
-        @book = Book.find_by_isbn(@result["industryIdentifiers"][1]["identifier"])
-        if @book.nil?
+        # @book = Book.find_by_isbn(@result["industryIdentifiers"][1]["identifier"].to_i)
+        @book = Book.find_by(isbn: @result["industryIdentifiers"][1]["identifier"].to_i)
+        p "-!-!-!"
+        #p @book
+        if @book.blank?
           @book = Book.new
           @book.genre_id = 1
           @book.title=@result["title"]
-          @book.author=@result["authors"][0]
+          unless @result["authors"].nil?
+            @book.author = @result["authors"][0]
+          end
           @book.published_date = @result["publishedDate"]
           @book.page_count = @result["pageCount"]
           @book.description = @result["description"]

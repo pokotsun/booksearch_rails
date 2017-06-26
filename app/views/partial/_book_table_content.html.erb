@@ -6,7 +6,10 @@
   <td><%= book.read_statuses.first.end_date||"未読" %></td>
   <td><%= book.read_statuses.first.score||"未採点" %></td>
   <th>
-    <%= check_box_tag "favorite", true, book.read_statuses.first.favorite, {id:"favorite-check-#{book.id}"} %>
-    <label class="table-favorite-check" for="favorite-check-<%= book.id%>"></label>
+    <%= form_tag review_update_favorite_path, remote: true, class: "update_favorite_form" do %>
+      <%= hidden_field_tag :id, book.read_statuses.first.id %>
+      <%= check_box_tag "favorite", true, book.read_statuses.first.favorite, {id:"favorite-check-#{book.id}"} %>
+      <label class="table-favorite-check" for="favorite-check-<%= book.id%>"></label>
+    <% end %>
   </th>
 </tr>

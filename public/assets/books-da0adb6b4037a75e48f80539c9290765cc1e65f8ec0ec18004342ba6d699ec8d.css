@@ -1,0 +1,10 @@
+/* line 4, /home/pokotsun/project/booksearch/app/assets/stylesheets/books.scss */
+.isbn-input-area-wrapper {
+  margin-top: 100px;
+  margin-left: 30% !important;
+}
+
+/* line 9, /home/pokotsun/project/booksearch/app/assets/stylesheets/books.scss */
+.isbn-submit-button {
+  margin-top: 10px;
+}

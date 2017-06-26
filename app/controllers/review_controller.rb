@@ -1,4 +1,5 @@
 class ReviewController < ApplicationController
+  protect_from_forgery except: [:update_favorite]
   add_breadcrumb 'ホーム', :root
   add_breadcrumb 'レビュー'
   def index
@@ -28,7 +29,7 @@ class ReviewController < ApplicationController
     @book = Book.find(params[:book_id])
     @read_status = ReadStatus.find_by(book_id: params[:book_id])
     @read_status.update(read_status_params)
-    @book.genre_id = params[:book_genre]
+    @book.genre_id = params[:book_genre] unless params[:book_genre].nil?
     @book.save
     render :update
   end
@@ -79,10 +80,21 @@ class ReviewController < ApplicationController
         @books = @books.joins(:genre).includes(:genre).order("genres.name DESC")
       end
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.js { render : }
+    end
+  end
+
+  def update_favorite
+    @read_status = ReadStatus.find(params[:id])
+    p "-!-!-!"
+    p "params = "+ params[:id]
+    @read_status.update(favorite: !@read_status.favorite)
   end
 
   private
   def read_status_params
-    params.require(:read_status).permit(:begin_date, :end_date, :score, :review)
+    params.require(:read_status).permit(:begin_date, :end_date, :score, :review, :favorite)
   end
 end

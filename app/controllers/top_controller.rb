@@ -18,7 +18,13 @@ class TopController < ApplicationController
     # スライダーに渡す本の情報
     @ranking_order_books = Book.joins(:read_statuses).includes(:read_statuses).order("read_statuses.score DESC")
     @ever_read_books = Book.joins(:read_statuses).where("read_statuses.end_date not ?", nil)
-    @never_read_books = Book.joins(:read_statuses).where("read_statuses.end_date is ?", nil)
+    @never_read_books = Book.joins(:read_statuses).includes(:read_statuses).where("read_statuses.end_date is ?", nil)
 
   end
+
+  def search
+    @books = Book.page(params[:page]).per(10).order(:id)
+    @books = @books.where("title like '%#{params[:book_name]}%'")
+  end
+
 end

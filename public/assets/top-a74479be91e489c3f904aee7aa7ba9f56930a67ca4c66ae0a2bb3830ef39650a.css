@@ -1,0 +1,58 @@
+/* line 5, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.logo-position {
+  margin-left: 4px;
+}
+
+/* line 8, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.nav-wrapper .input-field input[type=search] {
+  height: 64px;
+}
+
+/* line 11, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.nav-wrapper input[type="search"]:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* line 18, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.book-info-wrapper {
+  width: 30%;
+}
+
+/* line 22, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.book-num-size {
+  font-size: 20px;
+}
+
+/* line 26, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.font-size-150 {
+  font-size: 150% !important;
+}
+
+/* line 30, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.main-part-wrapper {
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+/* line 36, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.find-button-wrapper,
+.mylist-button-wrapper,
+.create-button-wrapper {
+  margin-top: 30px;
+}
+
+/* line 42, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.find-button-wrapper a,
+.mylist-button-wrapper a,
+.create-button-wrapper a {
+  width: 190px;
+}
+
+/* line 48, /home/pokotsun/project/booksearch/app/assets/stylesheets/top.scss */
+.book-info-wrapper {
+  margin-top: 10px;
+}
