@@ -35,23 +35,10 @@ class ReviewController < ApplicationController
     @read_status.update(read_status_params)
     @book.genre_id = params[:book_genre] unless params[:book_genre].nil?
     @book.save
+
+    # @book.genre.name
     render :update
   end
-
-  # def search_by_name
-  #   @books = Book.where("title like '%#{params[:book_name]}'%")
-  #   if @books.count > 0
-  #     respond_to do |format|
-  #       format.html { render :  }
-  #       format.js { render :not_found_dialog }
-  #   else
-  #     respond_to do |format|
-  #       format.html { render : }
-  #       format.js { render :not_found_dialog }
-  #     end
-  #
-  #   end
-  # end
 
   def search
     @books = Book.page(params[:page]).per(10).order(:id)
@@ -95,6 +82,6 @@ class ReviewController < ApplicationController
 
   private
   def read_status_params
-    params.require(:read_status).permit(:begin_date, :end_date, :score, :review, :favorite)
+    params.require(:read_status).permit(:begin_date, :end_date, :score, :review)
   end
 end

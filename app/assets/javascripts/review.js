@@ -110,7 +110,7 @@ $(function() {
 
   compDate = function(begin, end) {
     console.log(begin);
-    if(begin != "") {
+    if(begin != "" && end != "") {
       var day_begin = translateDate_to_Day(begin),
       day_end = translateDate_to_Day(end);
       if(day_end - day_begin >= 0)
@@ -122,6 +122,10 @@ $(function() {
   var $begin_date = $("input[name='read_status[begin_date]']");
   var $end_date = $("input[name='read_status[end_date]']");
   $begin_date.change(() => {
+    if(!compDate($begin_date.val(), $end_date.val())) {
+      Materialize.toast('読み終えた日がまだ未登録か、日にちに矛盾があります。', 5000);
+    }
+    console.log($('#review_genre').val());
   });
   $end_date.change(() => {
     if(!compDate($begin_date.val(), $end_date.val())) {

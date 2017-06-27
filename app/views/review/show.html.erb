@@ -29,7 +29,18 @@
 <div id="impression-wrapper" class="container">
   <h3>個人的な感想とか</h3>
   <div class="card-content z-depth-5 personal-data-wrapper">
-    <div><h5><i class="material-icons">check</i>既読</h5></div>
+    <%
+      ever_read_symbol = ""
+      ever_read_char = ""
+      if @read_status.begin_date.nil? || @read_status.end_date.nil?
+        ever_read_symbol = "error"
+        ever_read_char = "未読"
+      else
+        ever_read_symbol = "check"
+        ever_read_char = "既読"
+      end
+    %>
+    <div><h5><i class="material-icons"><%= ever_read_symbol %></i><%= ever_read_char %></h5></div>
     <p></p>
     <%=  render partial: 'partial/book_read_dates' unless @read_status.begin_date.nil? %>
     <div>ジャンル: <span id="review_genre"><%= @book.genre.name %></span></div>
