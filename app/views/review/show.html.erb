@@ -31,6 +31,7 @@
   <div class="card-content z-depth-5 personal-data-wrapper">
     <div><h5><i class="material-icons">check</i>既読</h5></div>
     <p></p>
+    <%=  render partial: 'partial/book_read_dates' unless @read_status.begin_date.nil? %>
     <div>ジャンル: <span id="review_genre"><%= @book.genre.name %></span></div>
     <p></p>
     <div>評価: <span id="review_score"><%=@read_status.score%></span>点</div>
@@ -54,8 +55,8 @@
     <input id="begin-date" name="read_status[begin_date]" type="date" class="datepicker">
     <!-- <%=f.date_field :begin_date%> -->
     <p></p>
-    <label for="begin-date">読み終わった日</label>
-    <input id="begin-date" name="read_status[end_date]" type="date" class="datepicker">
+    <label for="end-date">読み終わった日</label>
+    <input id="end-date" name="read_status[end_date]" type="date" class="datepicker">
     <!-- <%=f.date_field :end_date%> -->
     <p></p>
     <div class="input-genre-field">

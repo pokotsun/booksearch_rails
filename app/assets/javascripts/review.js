@@ -56,6 +56,79 @@ $(function() {
     });
   });
 
+  // datepicker のイベント
+
+  translateDate_to_Day = function(x) {
+    console.log($(x));
+    var x = x.split(' ');
+    x[1] = x[1].split(',');
+    var Day = parseInt(x[0], 10), Month = x[1], Year = parseInt(x[2], 10);
+    var res = 0;
+    res += (Year - 2000) * 365;
+    switch(Month) {
+      case 'January' :
+      break;
+      case 'February' :
+      res += 31;
+      break;
+      case 'March' :
+      res += 59;
+      break;
+      case 'April' :
+      res += 90;
+      break;
+      case 'May' :
+      res += 120;
+      break;
+      case 'June' :
+      res += 151;
+      break;
+      case 'July' :
+      res += 181;
+      break;
+      case 'August' :
+      res += 212;
+      break;
+      case 'September' :
+      res += 242;
+      break;
+      case 'October' :
+      res += 273;
+      break;
+      case 'Nobember' :
+      res += 303;
+      break;
+      case 'December' :
+      res += 334;
+      break;
+      default :
+      break;
+    }
+    res += Day;
+    return res;
+  };
+
+  compDate = function(begin, end) {
+    console.log(begin);
+    if(begin != "") {
+      var day_begin = translateDate_to_Day(begin),
+      day_end = translateDate_to_Day(end);
+      if(day_end - day_begin >= 0)
+        return true;
+    }
+    return false;
+  };
+
+  var $begin_date = $("input[name='read_status[begin_date]']");
+  var $end_date = $("input[name='read_status[end_date]']");
+  $begin_date.change(() => {
+  });
+  $end_date.change(() => {
+    if(!compDate($begin_date.val(), $end_date.val())) {
+      Materialize.toast('読み始めた日がまだ未登録か、日にちに矛盾があります。', 5000);
+    }
+  });
+
   // タグのイベント定義
   // read_status_idの取得
   var read_status_id = $('#tag-wrapper').attr('data-read-status-id');
