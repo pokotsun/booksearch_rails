@@ -28,8 +28,8 @@
             <p class="book-num-size"><%= @never_read_book_count %>冊</p>
           </div>
           <div class="card-action">
-            <a href="#">未読リストへ</a>
-            <a href="#">既読リストへ</a>
+            <%= link_to review_path(ever_read: false) do %>未読リスト<% end %>
+            <%= link_to review_path(ever_read: true) do %>既読リスト<% end %>
           </div>
         </div>
       </div>

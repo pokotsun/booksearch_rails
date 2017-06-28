@@ -30,6 +30,7 @@
   <h3>個人的な感想とか</h3>
   <div class="card-content z-depth-5 personal-data-wrapper">
     <div><h5><i class="material-icons">check</i>既読</h5></div>
+    <div><h4 id="review_favorite"></h4></div>
     <p></p>
     <div>ジャンル: <span id="review_genre"><%= @book.genre.name %></span></div>
     <p></p>
@@ -49,6 +50,16 @@
   <h3>個人的な感想の編集</h3>
   <div class="card-content z-depth-5 personal-data-wrapper">
     <%= form_for @read_status, url: review_path+"/#{@book.id}",remote: true do |f| %>
+    <div>
+      <div class="switch">
+        <label>
+          お気に入りにしない
+          <input name="read_status[favorite]" type="checkbox" <%= "checked" if @read_status.favorite%>>
+          <span class="lever"></span>
+          お気に入りにする
+        </label>
+      </div>
+    </div>
     <p></p>
     <label for="begin-date">読み始めた日</label>
     <input id="begin-date" name="read_status[begin_date]" type="date" class="datepicker">
@@ -62,7 +73,7 @@
       <label>ジャンルを選んでください</label>
       <select name="book_genre">
         <option value="" disabled selected>ジャンル</option>
-          <% @genres.each do |genre| %>
+        <% @genres.each do |genre| %>
         <option value="<%= genre.id %>"><%= genre.name %></option>
         <% end %>
       </select>

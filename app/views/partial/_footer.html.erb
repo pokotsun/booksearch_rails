@@ -8,10 +8,10 @@
     <div class="col l4 offset-l2 s12">
       <h5 class="white-text">コンテンツ</h5>
       <ul>
-        <li><a class="grey-text text-lighten-3" href="#!">検索へ</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">マイリストへ</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">未読へ</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">既読へ</a></li>
+        <li><%= link_to review_path, :class => "grey-text text-lighten-3" do %>検索へ<% end %></li>
+        <li><%= link_to review_path(favorite: true), :class => "grey-text text-lighten-3" do %>マイリストへ<% end %></li>
+        <li><%= link_to review_path(ever_read: false), :class => "grey-text text-lighten-3" do %>未読へ<% end %></li>
+        <li><%= link_to review_path(ever_read: true), :class => "grey-text text-lighten-3" do %>既読へ<% end %></li>
       </ul>
     </div>
   </div>

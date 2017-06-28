@@ -6,7 +6,7 @@
   <td><%= book.read_statuses.first.end_date||"未読" %></td>
   <td><%= book.read_statuses.first.score||"未採点" %></td>
   <th>
-    <%= check_box_tag "favorite", true, book.read_statuses.first.favorite, {id:"favorite-check-#{book.id}"} %>
-    <label class="table-favorite-check" for="favorite-check-<%= book.id%>"></label>
+    <%= check_box_tag "favorite", true, book.read_statuses.first.favorite, {id:"#{book.id}"} %>
+    <label class="table-favorite-check" for="<%= book.id%>"></label>
   </th>
 </tr>
