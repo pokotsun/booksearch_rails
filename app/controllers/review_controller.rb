@@ -40,6 +40,17 @@ class ReviewController < ApplicationController
 
   def search
     @books = Book.page(params[:page]).per(10).order(:id)
+    if params[:order].present?
+      if params[:order] == "1"
+        @books = Book.page(params[:page]).per(10).sort_by_created_at_asc
+      elsif params["order"] == "2"
+        @books = Book.page(params[:page]).per(10).order("books.created_at desc")
+      elsif params["order"] == "3"
+        @books = Book.page(params[:page]).per(10).sort_by_score_desc
+      else
+        @books = Book.page(params[:page]).per(10).joins(:genre).includes(:genre).order("genres.name DESC")
+      end
+    end
     @books = @books.where("title like '%#{params[:book_name]}%'")
     # @books = Book.get_ever_or_never_read_books(params["ever_read"])
     if params["ever-read"] == "true"
@@ -58,17 +69,7 @@ class ReviewController < ApplicationController
         flg = false
       end
     end
-    if params[:order].present?
-      if params[:order] == "1"
-        @books = @books.sort_by_created_at_asc
-      elsif params["order"] == "2"
-        @books = @books.order("books.created_at desc")
-      elsif params["order"] == "3"
-        @books = @books.sort_by_score_desc
-      else
-        @books = @books.joins(:genre).includes(:genre).order("genres.name DESC")
-      end
-    end
+
   end
 
   def update_favorite
