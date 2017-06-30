@@ -35,8 +35,6 @@ class ReviewController < ApplicationController
     @read_status.update(read_status_params)
     @book.genre_id = params[:book_genre] unless params[:book_genre].nil?
     @book.save
-
-    # @book.genre.name
     render :update
   end
 
