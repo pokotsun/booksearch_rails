@@ -1,5 +1,5 @@
 <div class="slider-container">
-  <ul class="ranking-slider">
+  <ul class="ever-read-slider">
     <% books.each_with_index do |book,i| %>
     <span>
       <font color="#f5f5f5">
@@ -7,7 +7,6 @@
           <%= link_to review_path+"/#{book.id}" do %>
             <img class="content-img" src="<%= book.image_url || asset_path("thumbnail/noImage.jpg") %>">
           <% end %>
-        <div><%= i + 1 %>位</div>
         <div class="book-title center-align"><%= book.title %></div>
         <% read_status = ReadStatus.find_or_create_by(book_id: book.id) %>
         <div class="">評価点:
@@ -22,7 +21,7 @@
     <% end %>
   </ul>
   <div id="arrows">
-    <div class="ranking-slider-prev slick-prev"></div>
-    <div class="ranking-slider-next slick-next"></div>
+    <div class="ever-read-slider-prev slick-prev"></div>
+    <div class="ever-read-slider-next slick-next"></div>
   </div>
 </div>

@@ -40,9 +40,9 @@
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">assessment</i>ランキング上位</a></h3>
   <%= render partial: 'partial/ranking_slider', locals: {books:@ranking_order_books} %>
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">error</i>未読の本</a></h3>
-  <%= render partial: 'partial/book_slider', locals: {books:@never_read_books} %>
+  <%= render partial: 'partial/never_read_slider', locals: {books:@never_read_books} %>
   <h3 class="center-align"><a><i class="material-icons slider-title-icons">done</i>既読の本</a></h3>
-  <%= render partial: 'partial/book_slider', locals: {books:@ever_read_books} %>
+  <%= render partial: 'partial/ever_read_slider', locals: {books:@ever_read_books} %>
 </div>
 
 <%= render partial: 'partial/footer' %>

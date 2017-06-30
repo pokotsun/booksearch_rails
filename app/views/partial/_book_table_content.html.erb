@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to book.title, review_path+"/#{book.id}" %></td>
-  <td><%= book.author %></td>
+  <td><%= book.author || "取得失敗" %></td>
   <td><%= book.genre.name %></td>
   <td><%= book.read_statuses.first.begin_date||"未読" %></td>
   <td><%= book.read_statuses.first.end_date||"未読" %></td>

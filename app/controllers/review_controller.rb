@@ -58,11 +58,11 @@ class ReviewController < ApplicationController
         flg = false
       end
     end
-    if params["order"].present?
-      if params["order"] == "1"
+    if params[:order].present?
+      if params[:order] == "1"
         @books = @books.sort_by_created_at_asc
       elsif params["order"] == "2"
-        @books = @books.sort_by_created_at_desc
+        @books = @books.order("books.created_at desc")
       elsif params["order"] == "3"
         @books = @books.sort_by_score_desc
       else

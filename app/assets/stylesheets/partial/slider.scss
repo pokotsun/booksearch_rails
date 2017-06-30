@@ -9,16 +9,22 @@
   position: relative;
 }
 
-.slider.slick-initialized {
+.ranking-slider .slick-initialized,
+.ever-read-slider .slick-initialized,
+.never-read-slider .slick-initialized {
   display: block;
 }
 
-#arrows .slider-prev {
+#arrows .ranking-slider-prev,
+#arrows .never-read-slider-prev,
+#arrows .ever-read-slider-prev {
   left: -45px;
   top: 37%;
 }
 
-#arrows .slider-next {
+#arrows .ranking-slider-next,
+#arrows .never-read-slider-next,
+#arrows .ever-read-slider-next {
   right: -30px;
   top: 37%;
 }
@@ -42,12 +48,22 @@
   outline: 0;
 }
 
+.ranking-slider .content-img,
+.never-read-slider .content-img,
+.ever-read-slider .content-img {
+  max-width: 100%;
+  height: 200px;
+  max-height: 270px;
+  margin: 0 auto;
+}
+
 .slider .content-img {
   max-width: 100%;
   height: 200px;
   max-height: 270px;
   margin: 0 auto;
 }
+
 
 .book-title {
   margin: 5px 5px 3px;
