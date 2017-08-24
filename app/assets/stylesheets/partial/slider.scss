@@ -30,8 +30,7 @@
 }
 
 .slick-prev:before,
-.slick-next:before
-{
+.slick-next:before {
   font-family: 'slick';
   font-size: 40px;
   color: #e53935;
@@ -72,6 +71,7 @@
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
+
 .book-title-position {
   margin-top: 20px !important;
 }
